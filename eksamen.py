@@ -52,7 +52,7 @@ while helespillet:
             print(kort)
 
     def vis_hånd_dealer():
-        print("Dealers hånd")
+        print("Computer hånd")
         for kort in dealer.korthånd:
             print(kort)
 
@@ -97,7 +97,7 @@ while helespillet:
                     vis_hånd_dealer()
                 spiligang = False
                 if dealer.værdi > 21:
-                    print("Dealer har trukket over 21!")
+                    print("Computer har trukket over 21!")
                     print("Spiller har vundet!")
                     penge = penge+(bet*2)
                     playAgain()
@@ -106,7 +106,7 @@ while helespillet:
                     penge = penge+(bet*2)
                     playAgain()
                 elif dealer.værdi>spiller1.værdi:
-                    print("Dealer har vundet!")
+                    print("Computer har vundet!")
                     playAgain()
                 elif dealer.værdi == spiller1.værdi:
                     print("Push! Det blev uafgjort!")
@@ -124,7 +124,7 @@ while helespillet:
         træk_eller_stå()
         if spiller1.værdi>21:
             print("Spiller har trukket over 21!")
-            print("Dealer har vundet!")
+            print("Computer har vundet!")
             playAgain()
             break
 
