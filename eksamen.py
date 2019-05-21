@@ -5,10 +5,13 @@ import kort as k
 deck = [] # Laver et array der skal indhole hele kort spillet
 k.lavDeck(deck)  #Her laver vi kortene, giver dem farver og numre
 k.blandKort(deck)
+penge=100
 number_of_hands=0
 helespillet = True
 while helespillet:
-    print(len(deck))
+    # print(len(deck))
+    print("Du har så mange penge: {0}".format(penge))
+    bet = 0
     spiller1 = Hånd()
     dealer = Hånd()
     if number_of_hands==4:
@@ -16,7 +19,22 @@ while helespillet:
         k.lavDeck(deck)
         k.blandKort(deck) #Her blander vi kortene
     number_of_hands += 1
-
+    def betting():
+        while True:
+            try:
+                svar = int(input("Hvor meget vil du bette? Tast 0 hvis du bare vil spille for sjov"))
+                if svar>penge:
+                    print("Du har ikke nok penge!")
+                    continue
+            except ValueError:
+                print("Ikke et tal! Prøv igen!.")
+                continue
+            else:
+                return svar
+                break
+    bet = betting()
+    penge=penge-bet
+    print(bet)
     spiller1.tilføj_kort(k.delkort(deck))
     dealer.tilføj_kort(k.delkort(deck))
     spiller1.tilføj_kort(k.delkort(deck))
@@ -51,6 +69,7 @@ while helespillet:
     def træk_eller_stå():
         while True:
             global spiligang
+            global penge
             svar =input("Vil du trække et kort eller stå? Tryk 't' eller 's")
             if svar=="t":
                 spiller1.tilføj_kort(k.delkort(deck))
@@ -64,15 +83,18 @@ while helespillet:
                 if dealer.værdi > 21:
                     print("Dealer har trukket over 21!")
                     print("Spiller har vundet!")
+                    penge = penge+(bet*2)
                     playAgain()
                 elif spiller1.værdi>dealer.værdi:
                     print("Spiller har vundet!")
+                    penge = penge+(bet*2)
                     playAgain()
                 elif dealer.værdi>spiller1.værdi:
                     print("Dealer har vundet!")
                     playAgain()
                 elif dealer.værdi == spiller1.værdi:
                     print("Push! Det blev uafgjort!")
+                    penge=penge+bet
                     playAgain()
             else:
                 print("Du skal indtaste 't' eller 's'!")
