@@ -4,11 +4,18 @@ import kort as k
 
 deck = [] # Laver et array der skal indhole hele kort spillet
 k.lavDeck(deck)  #Her laver vi kortene, giver dem farver og numre
+k.blandKort(deck)
+number_of_hands=0
 helespillet = True
 while helespillet:
+    print(len(deck))
     spiller1 = Hånd()
     dealer = Hånd()
-    k.blandKort(deck) #Her blander vi kortene
+    if number_of_hands==4:
+        deck.clear()
+        k.lavDeck(deck)
+        k.blandKort(deck) #Her blander vi kortene
+    number_of_hands += 1
 
     spiller1.tilføj_kort(k.delkort(deck))
     dealer.tilføj_kort(k.delkort(deck))
