@@ -4,14 +4,15 @@ farver =('hjerter','ruder','kløver','spade')
 
 class Kort:
 
-    def __init__(self,farver,numre):
-        self.farver = farver
-        self.numre = numre
+    def __init__(self,farve,nummer):
+        self.farve = farve
+        self.nummer = nummer
 
 
 
     def __str__(self):
-        return self.farver + ": " + self.numre
+        return self.farve + ": " + self.nummer
+
 
 def lavDeck(deck):
     for farve in farver:
