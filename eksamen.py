@@ -46,8 +46,8 @@ def trækkort(hånd):
     hånd.tjekes()
 
 while True:
-    spiller_svar = input("Vil du være spiller eller dealer? Tryk s eller d" )
-    if spiller_svar=="s":
+    spiller_svar = input("Vil du være gambler eller dealer? Tryk g eller d" )
+    if spiller_svar=="g":
         spiller_dealer = False
         print("Du har valgt at være spiller!")
         break
@@ -72,11 +72,13 @@ while helespillet:
     dealer = Hånd()
     def vis_hånd_spiller():
         print("Spillers hånd")
+        # print("Korthånds værdi: {0}".format(spiller1.værdi))
         for kort in spiller1.korthånd:
             print(kort)
 
     def vis_hånd_dealer():
         print("Computer hånd")
+        # print("Korthånds værdi: {0}".format(dealer.værdi))
         for kort in dealer.korthånd:
             print(kort)
 
@@ -126,6 +128,8 @@ while helespillet:
             global spiligang
             global penge
             # if (spiller_dealer == False):
+            print("Spiller har: {0} point og Computer har: {1} point".format(spiller1.værdi,dealer.værdi))
+
             svar =input("Vil du trække et kort eller stå? Tryk 't' eller 's")
             if svar=="t":
                     # spiller1.tilføj_kort(k.delkort(deck))
